@@ -9,12 +9,13 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>Hello {{ app.user.nom }} {{ app.user.prenom }}! ✅</h1>
 
     This friendly message is coming from:
     <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Symfony_2/gsb_frais_symfony/src/Controller/DataimportController.php'|file_link(0) }}">src/Controller/DataimportController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Symfony_2/gsb_frais_symfony/templates/dataimport/index.html.twig'|file_link(0) }}">templates/dataimport/index.html.twig</a></code></li>
+        {% for fichefrais in fichefraisUser %}
+            <li> {{ ficheFrais.id }}-{{ ficheFrais.user.login}}-{{ ficheFrais}} </li>
+        {% endfor %}
     </ul>
 </div>
 {% endblock %}
