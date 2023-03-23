@@ -52,6 +52,8 @@ class FraisForfait
         return $this->montant;
     }
 
+
+
     public function setMontant(string $montant): self
     {
         $this->montant = $montant;
@@ -88,4 +90,6 @@ class FraisForfait
 
         return $this;
     }
+
+
 }

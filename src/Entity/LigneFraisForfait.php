@@ -34,6 +34,7 @@ class LigneFraisForfait
         return $this->quantite;
     }
 
+
     public function setQuantite(int $quantite): self
     {
         $this->quantite = $quantite;

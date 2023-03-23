@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use function PHPUnit\Framework\equalToIgnoringCase;
 
 #[ORM\Entity(repositoryClass: FicheFraisRepository::class)]
 class FicheFrais
@@ -184,6 +185,23 @@ class FicheFrais
 
         return $this;
     }
+    /**
+     * @return decimal
+     * cette méthode retourne le montant total déclaré dans les lignes de frais forfait et hors-forfait
+     */
 
 
+    public function getMontantLignesFrais()
+    {
+        $montantTotalHorsForfait = 0;
+        foreach ($this->getLigneFraisHorsForfait() as $uneLigneFraisHorsForfait){
+            $montantTotalHorsForfait += $uneLigneFraisHorsForfait->getMontant();
+        }
+        $montantTotalForfait = 0;
+        foreach ($this->getLigneFraisForfait() as $uneLigneFraisForfait){
+            $montantTotalForfait += $uneLigneFraisForfait->getQuantite() * $uneLigneFraisForfait->getFraisForfait()->getMontant();
+        }
+       $montantCumuleForfaits = $montantTotalForfait + $montantTotalHorsForfait;
+        return $montantCumuleForfaits;
+    }
 }
