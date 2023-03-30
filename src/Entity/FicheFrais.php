@@ -37,10 +37,10 @@ class FicheFrais
     #[ORM\JoinColumn(nullable: false)]
     private ?Etat $etat = null;
 
-    #[ORM\OneToMany(mappedBy: 'ficheFrais', targetEntity: LigneFraisHorsForfait::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'ficheFrais', targetEntity: LigneFraisHorsForfait::class, orphanRemoval: true, fetch: 'EAGER')]
     private Collection $ligneFraisHorsForfait;
 
-    #[ORM\OneToMany(mappedBy: 'ficheFrais', targetEntity: LigneFraisForfait::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'ficheFrais', targetEntity: LigneFraisForfait::class, orphanRemoval: true, fetch: 'EAGER')]
     private Collection $ligneFraisForfait;
 
     public function __construct()
@@ -204,4 +204,5 @@ class FicheFrais
        $montantCumuleForfaits = $montantTotalForfait + $montantTotalHorsForfait;
         return $montantCumuleForfaits;
     }
+
 }

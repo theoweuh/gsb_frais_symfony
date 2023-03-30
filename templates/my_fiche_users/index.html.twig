@@ -1,20 +1,48 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MyFicheUsersController!{% endblock %}
-
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    {{ form(myForm) }}
+    <h1>Fiches de frais de {{ selectedFicheFrais.user.nom }} {{ selectedFicheFrais.user.prenom }} </h1>
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Nom :</th>
+            <td>{{ selectedFicheFrais.user.nom }}</td>
+        </tr>
+        <tr>
+            <th>Prénom :</th>
+            <td>{{ selectedFicheFrais.user.prenom }}</td>
+        </tr>
+        <tr>
+            <th>Mois de la Fiche :</th>
+            <td>{{ selectedFicheFrais.mois }}</td>
+        </tr>
+        <tr>
+            <th>ID Fiche :</th>
+            <td>{{ selectedFicheFrais.id }}</td>
+        </tr>
+        <tr>
+            <th>Nombre de Justificatif :</th>
+            <td>{{ selectedFicheFrais.nbJustificatifs }}</td>
+        </tr>
+        <tr>
+            <th>Date Modif :</th>
+            <td>{{ selectedFicheFrais.dateModif.format('Y-m-d') }}</td>
+        </tr>
+        <tr>
+            <th>ID Etat :</th>
+            <td>{{ selectedFicheFrais.etat.id }}
+            <th> = </th>
+            <td>{{ selectedFicheFrais.etat.libelle }}</td>
+        </tr>
+        <tr>
+            <th>Montant Valide :</th>
+            <td>{{ selectedFicheFrais.montantValid }}</td>
+        </tr>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+        </tbody>
+    </table>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Symfony_2/gsb_frais_symfony/src/Controller/MyFicheUsersController.php'|file_link(0) }}">src/Controller/MyFicheUsersController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Symfony_2/gsb_frais_symfony/templates/my_fiche_users/index.html.twig'|file_link(0) }}">templates/my_fiche_users/index.html.twig</a></code></li>
-    </ul>
-</div>
+
+
 {% endblock %}
