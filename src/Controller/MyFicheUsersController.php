@@ -40,7 +40,6 @@ class MyFicheUsersController extends AbstractController
         if ($myForm->isSubmitted() && $myForm->isValid()){
            $selecetedFicheFrais = $registery->findOneBy(['user'=>$user,'mois'=>$myForm->getData()]);
         }
-
         return $this->render('my_fiche_users/index.html.twig', [
             'myForm' => $myForm,
             'selectedFicheFrais' => $selecetedFicheFrais,

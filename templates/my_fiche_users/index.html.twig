@@ -2,6 +2,7 @@
 
 {% block body %}
     {{ form(myForm) }}
+    {% if selectedFicheFrais !=null %}
     <h1>Fiches de frais de {{ selectedFicheFrais.user.nom }} {{ selectedFicheFrais.user.prenom }} </h1>
     <table class="table">
         <tbody>
@@ -42,6 +43,7 @@
 
         </tbody>
     </table>
+    {% endif %}
 
 
 
