@@ -21,6 +21,6 @@ class FraisForfaitType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => FraisForfait::class,
-        ]);
+            ]);
     }
 }
