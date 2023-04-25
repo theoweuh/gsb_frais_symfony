@@ -5,6 +5,7 @@ use App\Entity\FicheFrais;
 use App\Entity\FraisForfait;
 use App\Entity\LigneFraisForfait;
 use App\Entity\User;
+use App\Form\CreateLigneFraisForfaitType;
 use App\Form\EtatType;
 use App\Form\FraisForfaitType;
 use App\Form\MesFichesFraisType;
@@ -46,9 +47,6 @@ class MyFicheUsersController extends AbstractController
         ]);
 
     }
-
-
-
 
 }
 

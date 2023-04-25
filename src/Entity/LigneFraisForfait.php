@@ -24,6 +24,19 @@ class LigneFraisForfait
     #[ORM\JoinColumn(nullable: false)]
     private ?FraisForfait $fraisForfait = null;
 
+    /**
+     * @param int|null $quantite
+     * @param FicheFrais|null $ficheFrais
+     * @param FraisForfait|null $fraisForfait
+     */
+
+    public function __construct(?int $quantite, ?FicheFrais $ficheFrais, ?FraisForfait $fraisForfait)
+    {
+        $this->quantite = $quantite;
+        $this->ficheFrais = $ficheFrais;
+        $this->fraisForfait = $fraisForfait;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

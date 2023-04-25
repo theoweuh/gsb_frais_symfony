@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\FicheFrais;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -32,6 +33,12 @@ class CreateLigneFraisForfaitType extends AbstractType
                 'label' => 'Saisissez votre Forfait KM',
                 'required'=>true,
             ])
+
+            ->add('valider', SubmitType::class, [
+                'label' => 'Valider',
+            ])
+
+
         ;
     }
 
