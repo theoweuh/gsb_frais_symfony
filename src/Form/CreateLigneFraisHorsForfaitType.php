@@ -15,7 +15,6 @@ class CreateLigneFraisHorsForfaitType extends AbstractType
             ->add('libelle')
             ->add('date')
             ->add('montant')
-            ->add('ficheFrais')
         ;
     }
 

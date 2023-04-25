@@ -1,9 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <div class="container">
+    <div class="card border-22 shadow my-5">
+    <div class="card-body p-5">
     {{ form(myForm) }}
     {% if selectedFicheFrais !=null %}
-    <h1>Fiches de frais de {{ selectedFicheFrais.user.nom }} {{ selectedFicheFrais.user.prenom }} </h1>
+
+        <h1>Fiches de frais de {{ selectedFicheFrais.user.nom }} {{ selectedFicheFrais.user.prenom }} </h1>
     <table class="table">
         <tbody>
         <tr>
@@ -40,6 +44,7 @@
             <th>Montant Valide :</th>
             <td>{{ selectedFicheFrais.montantValid }}</td>
         </tr>
+
 
         </tbody>
     </table>

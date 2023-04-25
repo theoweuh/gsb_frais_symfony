@@ -12,13 +12,60 @@
         <style>
 
             body {
-                background: url('https://wallpapertag.com/wallpaper/full/2/d/3/129105-beautiful-white-abstract-background-1920x1080.jpg') no-repeat center center fixed;
+                background: url('https://wallpapercave.com/wp/wp3316083.jpg') no-repeat center center fixed;
                 -webkit-background-size: auto;
                 -moz-background-size: cover;
                 background-size: auto;
                 -o-background-size: auto;
 
             }
+
+
+
+
+            div:after {
+                position: absolute;
+                content: "";
+                top: 5vw;
+                left: 0;
+                right: 0;
+                z-index: -1;
+                height: 100%;
+                width: 100%;
+                margin: 0 auto;
+                transform: scale(0.75);
+                -webkit-filter: blur(5vw);
+                -moz-filter: blur(5vw);
+                -ms-filter: blur(5vw);
+                filter: blur(5vw);
+                background: linear-gradient(270deg, #0fffc1, #7e0fff);
+                background-size: 200% 200%;
+                animation: animateGlow 10s ease infinite;
+            }
+            @keyframes animateGlow {
+                0% {
+                    background-position: 0% 50%;
+                }
+                50% {
+                    background-position: 100% 50%;
+                }
+                100% {
+                    background-position: 0% 50%;
+                }
+            }
+            @keyframes textColor {
+                0% {
+                    color: #7e0fff;
+                }
+                50% {
+                    color: #0fffc1;
+                }
+                100% {
+                    color: #7e0fff;
+                }
+            }
+
+
 
             input {
 

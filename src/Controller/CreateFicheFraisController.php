@@ -5,7 +5,9 @@ use App\Entity\Etat;
 use App\Entity\FicheFrais;
 use App\Entity\FraisForfait;
 use App\Entity\LigneFraisForfait;
+use App\Entity\LigneFraisHorsForfait;
 use App\Form\CreateLigneFraisForfaitType;
+use App\Form\CreateLigneFraisHorsForfaitType;
 use App\Repository\FicheFraisRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,7 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('newFiche')]
+#[Route('listemois/newFiche')]
 class CreateFicheFraisController extends AbstractController
 {
     #[Route('/', name: 'app_create_fiche_frais_new')]
@@ -54,7 +56,6 @@ class CreateFicheFraisController extends AbstractController
 
         if($formLignesFraisForfait->isSubmitted() && $formLignesFraisForfait->isValid()){
             $ligneFraisForfait = $currentFicheFrais->getLigneFraisForfait();
-            //dd($currentFicheFrais);
 
             $currentFicheFrais->getLigneFraisForfait()[0]->setQuantite($formLignesFraisForfait->get('forfaitEtape')->getData());
             $currentFicheFrais->getLigneFraisForfait()[1]->setQuantite($formLignesFraisForfait->get('nuite')->getData());
@@ -65,13 +66,25 @@ class CreateFicheFraisController extends AbstractController
             $doctrine->getManager()->flush();
         }
 
+        $newLfhf = new LigneFraisHorsForfait();
+        $newLfhf->setFicheFrais($currentFicheFrais);
+
+        $formLignesFraisHorsForfait = $this->createForm(CreateLigneFraisHorsForfaitType::class, $newLfhf);
+        $formLignesFraisHorsForfait->handleRequest($request);
+
+        if($formLignesFraisHorsForfait->isSubmitted()&& $formLignesFraisHorsForfait->isValid()){
+            $currentFicheFrais->addLigneFraisHorsForfait($newLfhf);
+            $doctrine->getManager()->persist($currentFicheFrais);
+            $doctrine->getManager()->persist($newLfhf);
+            $doctrine->getManager()->flush();
+        }
+
         return $this->render('create_fiche_frais/index.html.twig', [
             'formLigneFraisForfait' => $formLignesFraisForfait,
-            'formnuite' => $formLignesFraisForfait,
-            'formrepas' => $formLignesFraisForfait,
-            'forfaitKm' => $formLignesFraisForfait,
+            'formLigneFraisHorsForfait' => $formLignesFraisHorsForfait,
         ]);
     }
+
 
 }
 
